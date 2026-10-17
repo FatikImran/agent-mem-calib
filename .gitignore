@@ -1,0 +1,4 @@
+data/
+scripts/__pycache__/
+src/data/__pycache__/
+*.pyc
