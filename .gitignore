@@ -2,3 +2,8 @@ data/
 scripts/__pycache__/
 src/data/__pycache__/
 *.pyc
+
+docs/
+docs.txt/
+
+models/
