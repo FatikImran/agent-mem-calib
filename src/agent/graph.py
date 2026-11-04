@@ -38,7 +38,7 @@ def retrieve_memory(state: AgentState):
     }
     return {"messages": [sys_msg]}
 
-def call_tool(state: AgentState):
+def call_tool(state: AgentState, *, temperature: float = 0.1, seed: int | None = None):
     """Call the LLM and parse the tool call."""
     tool_def = [{
         "type": "function",
@@ -57,7 +57,8 @@ def call_tool(state: AgentState):
         tools=tool_def,
         tool_choice="auto",
         max_tokens=512,
-        temperature=0.1
+        temperature=temperature,
+        seed=seed
     )
     
     msg = response["choices"][0]["message"]
@@ -71,12 +72,18 @@ def call_tool(state: AgentState):
     final_call = None
     
     if tool_calls:
-        final_call = {
-            "name": tool_calls[0]["function"]["name"],
-            "arguments": json.loads(tool_calls[0]["function"]["arguments"])
-        }
-    else:
-        content = msg.get("content", "")
+        function = tool_calls[0].get("function") or {}
+        arguments = function.get("arguments")
+        if isinstance(arguments, str):
+            try:
+                arguments = json.loads(arguments)
+            except json.JSONDecodeError:
+                arguments = None
+        if function.get("name") and isinstance(arguments, dict):
+            final_call = {"name": function["name"], "arguments": arguments}
+
+    if final_call is None:
+        content = msg.get("content") or ""
         # Look for the <tool_call> tags specifically
         tool_call_match = re.search(r'<tool_call>\s*(.*?)\s*</tool_call>', content, re.DOTALL)
         
@@ -92,7 +99,7 @@ def call_tool(state: AgentState):
         if json_str:
             try:
                 parsed = json.loads(json_str)
-                if "name" in parsed and "arguments" in parsed:
+                if isinstance(parsed, dict) and parsed.get("name") and isinstance(parsed.get("arguments"), dict):
                     final_call = {"name": parsed["name"], "arguments": parsed["arguments"]}
             except json.JSONDecodeError:
                 pass
