@@ -12,6 +12,7 @@ class AgentState(TypedDict):
     tool_schema: dict
     memory_context: list[dict]
     messages: Annotated[Sequence[dict], operator.add]
+    generation_metadata: dict
     final_tool_call: dict | None
 
 # 2. Load the Model globally (so it doesn't reload on every graph step)
@@ -38,7 +39,7 @@ def retrieve_memory(state: AgentState):
     }
     return {"messages": [sys_msg]}
 
-def call_tool(state: AgentState, *, temperature: float = 0.1, seed: int | None = None):
+def call_tool(state: AgentState, *, temperature: float = 0.1, seed: int | None = None, max_tokens: int = 512):
     """Call the LLM and parse the tool call."""
     tool_def = [{
         "type": "function",
@@ -56,7 +57,7 @@ def call_tool(state: AgentState, *, temperature: float = 0.1, seed: int | None =
         messages=messages,
         tools=tool_def,
         tool_choice="auto",
-        max_tokens=512,
+        max_tokens=max_tokens,
         temperature=temperature,
         seed=seed
     )
@@ -104,7 +105,14 @@ def call_tool(state: AgentState, *, temperature: float = 0.1, seed: int | None =
             except json.JSONDecodeError:
                 pass
                 
-    return {"final_tool_call": final_call, "messages": [msg]}
+    return {
+        "final_tool_call": final_call,
+        "messages": [msg],
+        "generation_metadata": {
+            "finish_reason": response["choices"][0].get("finish_reason"),
+            "usage": response.get("usage"),
+        },
+    }
 
 # 4. Build the Graph
 workflow = StateGraph(AgentState)
