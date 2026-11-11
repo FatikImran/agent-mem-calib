@@ -1,4 +1,6 @@
 /data/
+# Generated local submission bundle, including rendered drafts and evidence manifests.
+/submission/
 scripts/__pycache__/
 src/data/__pycache__/
 *.pyc
@@ -7,3 +9,58 @@ docs/
 docs.txt/
 
 models/
+
+# Keep local experiment outputs at their canonical paths; allow only verified,
+# non-text aggregate evidence in the public Git release.
+/results/**
+!/results/benchmark-release-verification.json
+!/results/natural-retrieval-100-summary.json
+!/results/primary-repeatability-summary.json
+!/results/retrieval-corpus-audit.json
+!/results/first-pass/
+!/results/first-pass/approved-pass-efficiency.json
+
+# Local exploratory diagnostics and planning helpers.
+/scripts/adjudicate_h3_feasibility.py
+/scripts/audit_prompt_capacity.py
+/scripts/check_gap3_clean.py
+/scripts/check_hybrid_development.py
+/scripts/check_prompt_parity.py
+/scripts/inspect_releases.py
+/scripts/prepare_h3_feasibility.py
+/scripts/probe_development_no_think.py
+/scripts/probe_gap3.py
+/scripts/probe_gap3_generation.py
+/scripts/probe_retrieval_fit.py
+/scripts/propose_compute_subset.py
+/scripts/propose_natural_retrieval_check.py
+/scripts/record_repo_audit.py
+/scripts/replay_gap3_cap.py
+/scripts/screen_gap3_dev.py
+/scripts/summarize_comparative_development.py
+/scripts/summarize_development_no_think.py
+/scripts/summarize_gap3_screen_calls.py
+/scripts/summarize_gap3_uniform.py
+/scripts/summarize_retrieval_development.py
+
+# Research files include both public-facing methodology and local task-level evidence.
+# Allow only individually reviewed documentation and non-task-level metadata.
+/research/**
+!/research/
+!/research/architecture.md
+!/research/author-paper.tex
+!/research/first-pass-findings.md
+!/research/memgate-wrapper-findings.md
+!/research/retrieval-budgets.json
+!/research/retrieval-release-audit.md
+!/research/scoping-ablation-findings.md
+!/research/submission-evidence-index.md
+!/research/evidence/
+!/research/evidence/benchmark-revision.json
+!/research/evidence/bge-weight-download.json
+!/research/evidence/generator-local-asset.json
+!/research/evidence/gpu-wheel-metadata.json
+!/research/evidence/gpu-wheel-receipt.json
+!/research/evidence/model-revisions.json
+!/research/evidence/release-inventory.json
+!/research/evidence/retrieval-runtime-lock.txt
