@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "8e2f3ff39f1c480859602f3b2f4354ecb7b33946017dec3d033af5060fa60f4f",
+  "panels": {
+    "unrelated": {
+      "n": 100,
+      "bm25": 10,
+      "dense": 18,
+      "hybrid": 17
+    },
+    "partial": {
+      "n": 4,
+      "bm25": 0,
+      "dense": 1,
+      "hybrid": 0
+    }
+  }
+}

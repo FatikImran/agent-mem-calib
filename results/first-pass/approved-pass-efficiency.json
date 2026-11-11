@@ -1,0 +1,151 @@
+{
+  "summary_sha256": "6a6a547cd3570c636e4747d98a8e1911501ca1d4a582eb97ab2043863ec17fbc",
+  "unique_saved_model_calls": 1671,
+  "unique_saved_inference_seconds": 9773.896424300074,
+  "limitations": "Per-outcome costs sum saved generator and upstream LLM calls, including reused calls. They exclude retrieval, gate encoding, initialization and orchestration. Unique totals count each saved call once per parent. Timings include heterogeneous operating conditions and are not controlled latency benchmarks. Missing tool calls are not automatically classified as clarification.",
+  "panels": {
+    "unfiltered/baseline_bm25": {
+      "n": 400,
+      "mean_llm_seconds": 3.7391172397502803,
+      "median_llm_seconds": 1.521307250000973,
+      "mean_prompt_tokens": 450.77,
+      "mean_completion_tokens": 42.07,
+      "stage_status_counts": {
+        "ok": 400
+      }
+    },
+    "unfiltered/baseline_hybrid": {
+      "n": 400,
+      "mean_llm_seconds": 3.221786855499918,
+      "median_llm_seconds": 1.4814969999970344,
+      "mean_prompt_tokens": 420.215,
+      "mean_completion_tokens": 39.455,
+      "stage_status_counts": {
+        "ok": 400
+      }
+    },
+    "unfiltered/clean": {
+      "n": 100,
+      "mean_llm_seconds": 1.827032882999847,
+      "median_llm_seconds": 1.4451815499996883,
+      "mean_prompt_tokens": 417.03,
+      "mean_completion_tokens": 34.82,
+      "stage_status_counts": {
+        "ok": 100
+      }
+    },
+    "memgate/clean": {
+      "n": 100,
+      "mean_llm_seconds": 1.7899849530001302,
+      "median_llm_seconds": 1.4451815499996883,
+      "mean_prompt_tokens": 403.08,
+      "mean_completion_tokens": 35.13,
+      "stage_status_counts": {
+        "ok": 100
+      }
+    },
+    "self_recheck/clean": {
+      "n": 100,
+      "mean_llm_seconds": 20.503907211000442,
+      "median_llm_seconds": 14.313885799998388,
+      "mean_prompt_tokens": 531.21,
+      "mean_completion_tokens": 492.29,
+      "stage_status_counts": {
+        "ok": 93,
+        "incomplete_filter": 7
+      }
+    },
+    "judge/clean": {
+      "n": 100,
+      "mean_llm_seconds": 11.178918789000235,
+      "median_llm_seconds": 6.3903627500003495,
+      "mean_prompt_tokens": 783.27,
+      "mean_completion_tokens": 183.27,
+      "stage_status_counts": {
+        "ok": 100
+      }
+    },
+    "unfiltered/unrelated": {
+      "n": 100,
+      "mean_llm_seconds": 1.813134150999831,
+      "median_llm_seconds": 1.4657983500001137,
+      "mean_prompt_tokens": 434.21,
+      "mean_completion_tokens": 35.07,
+      "stage_status_counts": {
+        "ok": 100
+      }
+    },
+    "memgate/unrelated": {
+      "n": 100,
+      "mean_llm_seconds": 1.792172959999407,
+      "median_llm_seconds": 1.4647986000018136,
+      "mean_prompt_tokens": 418.61,
+      "mean_completion_tokens": 35.56,
+      "stage_status_counts": {
+        "ok": 100
+      }
+    },
+    "self_recheck/unrelated": {
+      "n": 100,
+      "mean_llm_seconds": 23.823343824000187,
+      "median_llm_seconds": 17.66099645000213,
+      "mean_prompt_tokens": 539.43,
+      "mean_completion_tokens": 567.98,
+      "stage_status_counts": {
+        "ok": 89,
+        "incomplete_filter": 11
+      }
+    },
+    "judge/unrelated": {
+      "n": 100,
+      "mean_llm_seconds": 11.777795497999941,
+      "median_llm_seconds": 7.086590400000205,
+      "mean_prompt_tokens": 816.65,
+      "mean_completion_tokens": 213.39,
+      "stage_status_counts": {
+        "ok": 100
+      }
+    },
+    "unfiltered/partial": {
+      "n": 4,
+      "mean_llm_seconds": 1.8571607499998208,
+      "median_llm_seconds": 1.6557025000001886,
+      "mean_prompt_tokens": 475.75,
+      "mean_completion_tokens": 42.25,
+      "stage_status_counts": {
+        "ok": 4
+      }
+    },
+    "memgate/partial": {
+      "n": 4,
+      "mean_llm_seconds": 1.8368488999985857,
+      "median_llm_seconds": 1.6557025000001886,
+      "mean_prompt_tokens": 459,
+      "mean_completion_tokens": 42.25,
+      "stage_status_counts": {
+        "ok": 4
+      }
+    },
+    "self_recheck/partial": {
+      "n": 4,
+      "mean_llm_seconds": 24.517581224999958,
+      "median_llm_seconds": 16.165239400001155,
+      "mean_prompt_tokens": 568.25,
+      "mean_completion_tokens": 592.75,
+      "stage_status_counts": {
+        "incomplete_filter": 1,
+        "ok": 3
+      }
+    },
+    "judge/partial": {
+      "n": 4,
+      "mean_llm_seconds": 11.066363949999868,
+      "median_llm_seconds": 11.448698650001461,
+      "mean_prompt_tokens": 872,
+      "mean_completion_tokens": 233,
+      "stage_status_counts": {
+        "ok": 4
+      }
+    }
+  }
+}

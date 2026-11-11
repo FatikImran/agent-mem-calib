@@ -1,0 +1,11 @@
+{
+  "sessions": 2029,
+  "user_turns": 25701,
+  "empty_user_turns": 0,
+  "marker_counts": {
+    "historical dialog": 749,
+    "tool_calls": 0,
+    "role definition:": 745
+  },
+  "note": "Heuristic markers, not adjudicated leakage counts; no text removed."
+}

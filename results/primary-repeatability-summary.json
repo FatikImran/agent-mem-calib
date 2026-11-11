@@ -1,0 +1,1003 @@
+{
+  "interpretation": "Three greedy execution passes at unchanged temperature zero and seed 42. Sample SD is between-run variation, not independent task evidence. Timings exclude retrieval and gate preprocessing and reflect different machine conditions. Within-pass exact-input reuse is retained; no inference reused across passes.",
+  "passes": [
+    {
+      "number": 1,
+      "summary_sha256": "6a6a547cd3570c636e4747d98a8e1911501ca1d4a582eb97ab2043863ec17fbc",
+      "unique_model_calls": 1671,
+      "saved_inference_seconds": 9773.896424300074,
+      "panel_mean_llm_seconds": {
+        "unfiltered/baseline_bm25": 3.7391172397502803,
+        "unfiltered/baseline_hybrid": 3.221786855499918,
+        "unfiltered/clean": 1.827032882999847,
+        "memgate/clean": 1.7899849530001302,
+        "self_recheck/clean": 20.503907211000442,
+        "judge/clean": 11.178918789000235,
+        "unfiltered/unrelated": 1.813134150999831,
+        "memgate/unrelated": 1.792172959999407,
+        "self_recheck/unrelated": 23.823343824000187,
+        "judge/unrelated": 11.777795497999941,
+        "unfiltered/partial": 1.8571607499998208,
+        "memgate/partial": 1.8368488999985857,
+        "self_recheck/partial": 24.517581224999958,
+        "judge/partial": 11.066363949999868
+      }
+    },
+    {
+      "number": 2,
+      "summary_sha256": "aba4d27cb727f7bcf67a7178e16fd0cb6eee9fb561b9ccfaa36fcb777c9a42f4",
+      "unique_model_calls": 1671,
+      "saved_inference_seconds": 7279.0615247997775,
+      "panel_mean_llm_seconds": {
+        "unfiltered/baseline_bm25": 1.8422001375001127,
+        "unfiltered/baseline_hybrid": 1.7042549760000112,
+        "unfiltered/clean": 1.5811873339996965,
+        "memgate/clean": 1.5610363189999772,
+        "self_recheck/clean": 17.449674413000903,
+        "judge/clean": 8.746842188999581,
+        "unfiltered/unrelated": 1.6283839359992998,
+        "memgate/unrelated": 1.6102833259996259,
+        "self_recheck/unrelated": 19.89209603399926,
+        "judge/unrelated": 10.030385402998945,
+        "unfiltered/partial": 2.1904405749992293,
+        "memgate/partial": 2.1549981749994913,
+        "self_recheck/partial": 22.697685375002038,
+        "judge/partial": 11.99052157499682
+      }
+    },
+    {
+      "number": 3,
+      "summary_sha256": "f5898b54f60fbc376a701fe26efce98d17a68eb2f11a704c8f3aa8f125fe1c07",
+      "unique_model_calls": 1671,
+      "saved_inference_seconds": 8101.440098299645,
+      "panel_mean_llm_seconds": {
+        "unfiltered/baseline_bm25": 2.142855270499931,
+        "unfiltered/baseline_hybrid": 1.9917445772497013,
+        "unfiltered/clean": 1.7741948440001578,
+        "memgate/clean": 1.75495815199989,
+        "self_recheck/clean": 19.849426069000472,
+        "judge/clean": 8.908055997998309,
+        "unfiltered/unrelated": 1.8045467089996965,
+        "memgate/unrelated": 1.7796799789991928,
+        "self_recheck/unrelated": 22.83598588199922,
+        "judge/unrelated": 10.325336227999214,
+        "unfiltered/partial": 2.068960500004323,
+        "memgate/partial": 2.0329892500049027,
+        "self_recheck/partial": 21.836990799998603,
+        "judge/partial": 11.21737204999954
+      }
+    }
+  ],
+  "comparisons_to_pass_one": [
+    {
+      "pass": 2,
+      "same_model_request_keys": true,
+      "common_requests": 1671,
+      "changed_response_choices": [
+        "qa_003/8cc49e5219b5c78ff2b85a34164763d77d0e3053d02f0ad8f03eacbec129599a"
+      ],
+      "changed_parsed_outcomes": []
+    },
+    {
+      "pass": 3,
+      "same_model_request_keys": true,
+      "common_requests": 1671,
+      "changed_response_choices": [
+        "qa_003/8cc49e5219b5c78ff2b85a34164763d77d0e3053d02f0ad8f03eacbec129599a"
+      ],
+      "changed_parsed_outcomes": []
+    }
+  ],
+  "metrics": {
+    "unfiltered/baseline_bm25": {
+      "f1": {
+        "values": [
+          0.2217391304347826,
+          0.2217391304347826,
+          0.2217391304347826
+        ],
+        "mean": 0.2217391304347826,
+        "sample_sd": 0.0
+      },
+      "parsed": {
+        "values": [
+          295,
+          295,
+          295
+        ],
+        "mean": 295,
+        "sample_sd": 0.0
+      },
+      "correct_tool": {
+        "values": [
+          295,
+          295,
+          295
+        ],
+        "mean": 295,
+        "sample_sd": 0.0
+      },
+      "exact": {
+        "values": [
+          38,
+          38,
+          38
+        ],
+        "mean": 38,
+        "sample_sd": 0.0
+      },
+      "uptake": {
+        "values": [
+          0,
+          0,
+          0
+        ],
+        "mean": 0,
+        "sample_sd": 0.0
+      },
+      "joint": {
+        "values": [
+          0,
+          0,
+          0
+        ],
+        "mean": 0,
+        "sample_sd": 0.0
+      },
+      "fallbacks": {
+        "values": [
+          0,
+          0,
+          0
+        ],
+        "mean": 0,
+        "sample_sd": 0.0
+      }
+    },
+    "unfiltered/baseline_hybrid": {
+      "f1": {
+        "values": [
+          0.24590163934426226,
+          0.24590163934426226,
+          0.24590163934426226
+        ],
+        "mean": 0.24590163934426226,
+        "sample_sd": 0.0
+      },
+      "parsed": {
+        "values": [
+          333,
+          333,
+          333
+        ],
+        "mean": 333,
+        "sample_sd": 0.0
+      },
+      "correct_tool": {
+        "values": [
+          333,
+          333,
+          333
+        ],
+        "mean": 333,
+        "sample_sd": 0.0
+      },
+      "exact": {
+        "values": [
+          42,
+          42,
+          42
+        ],
+        "mean": 42,
+        "sample_sd": 0.0
+      },
+      "uptake": {
+        "values": [
+          0,
+          0,
+          0
+        ],
+        "mean": 0,
+        "sample_sd": 0.0
+      },
+      "joint": {
+        "values": [
+          0,
+          0,
+          0
+        ],
+        "mean": 0,
+        "sample_sd": 0.0
+      },
+      "fallbacks": {
+        "values": [
+          0,
+          0,
+          0
+        ],
+        "mean": 0,
+        "sample_sd": 0.0
+      }
+    },
+    "unfiltered/clean": {
+      "f1": {
+        "values": [
+          0.2108433734939759,
+          0.2108433734939759,
+          0.2108433734939759
+        ],
+        "mean": 0.2108433734939759,
+        "sample_sd": 0.0
+      },
+      "parsed": {
+        "values": [
+          83,
+          83,
+          83
+        ],
+        "mean": 83,
+        "sample_sd": 0.0
+      },
+      "correct_tool": {
+        "values": [
+          83,
+          83,
+          83
+        ],
+        "mean": 83,
+        "sample_sd": 0.0
+      },
+      "exact": {
+        "values": [
+          11,
+          11,
+          11
+        ],
+        "mean": 11,
+        "sample_sd": 0.0
+      },
+      "uptake": {
+        "values": [
+          1,
+          1,
+          1
+        ],
+        "mean": 1,
+        "sample_sd": 0.0
+      },
+      "joint": {
+        "values": [
+          0,
+          0,
+          0
+        ],
+        "mean": 0,
+        "sample_sd": 0.0
+      },
+      "fallbacks": {
+        "values": [
+          0,
+          0,
+          0
+        ],
+        "mean": 0,
+        "sample_sd": 0.0
+      }
+    },
+    "memgate/clean": {
+      "f1": {
+        "values": [
+          0.20121951219512194,
+          0.20121951219512194,
+          0.20121951219512194
+        ],
+        "mean": 0.20121951219512194,
+        "sample_sd": 0.0
+      },
+      "parsed": {
+        "values": [
+          82,
+          82,
+          82
+        ],
+        "mean": 82,
+        "sample_sd": 0.0
+      },
+      "correct_tool": {
+        "values": [
+          82,
+          82,
+          82
+        ],
+        "mean": 82,
+        "sample_sd": 0.0
+      },
+      "exact": {
+        "values": [
+          10,
+          10,
+          10
+        ],
+        "mean": 10,
+        "sample_sd": 0.0
+      },
+      "uptake": {
+        "values": [
+          1,
+          1,
+          1
+        ],
+        "mean": 1,
+        "sample_sd": 0.0
+      },
+      "joint": {
+        "values": [
+          0,
+          0,
+          0
+        ],
+        "mean": 0,
+        "sample_sd": 0.0
+      },
+      "fallbacks": {
+        "values": [
+          0,
+          0,
+          0
+        ],
+        "mean": 0,
+        "sample_sd": 0.0
+      }
+    },
+    "self_recheck/clean": {
+      "f1": {
+        "values": [
+          0.1752988047808765,
+          0.1752988047808765,
+          0.1752988047808765
+        ],
+        "mean": 0.1752988047808765,
+        "sample_sd": 0.0
+      },
+      "parsed": {
+        "values": [
+          36,
+          36,
+          36
+        ],
+        "mean": 36,
+        "sample_sd": 0.0
+      },
+      "correct_tool": {
+        "values": [
+          36,
+          36,
+          36
+        ],
+        "mean": 36,
+        "sample_sd": 0.0
+      },
+      "exact": {
+        "values": [
+          9,
+          9,
+          9
+        ],
+        "mean": 9,
+        "sample_sd": 0.0
+      },
+      "uptake": {
+        "values": [
+          0,
+          0,
+          0
+        ],
+        "mean": 0,
+        "sample_sd": 0.0
+      },
+      "joint": {
+        "values": [
+          0,
+          0,
+          0
+        ],
+        "mean": 0,
+        "sample_sd": 0.0
+      },
+      "fallbacks": {
+        "values": [
+          7,
+          7,
+          7
+        ],
+        "mean": 7,
+        "sample_sd": 0.0
+      }
+    },
+    "judge/clean": {
+      "f1": {
+        "values": [
+          0.16961130742049468,
+          0.16961130742049468,
+          0.16961130742049468
+        ],
+        "mean": 0.16961130742049468,
+        "sample_sd": 0.0
+      },
+      "parsed": {
+        "values": [
+          61,
+          61,
+          61
+        ],
+        "mean": 61,
+        "sample_sd": 0.0
+      },
+      "correct_tool": {
+        "values": [
+          61,
+          61,
+          61
+        ],
+        "mean": 61,
+        "sample_sd": 0.0
+      },
+      "exact": {
+        "values": [
+          8,
+          8,
+          8
+        ],
+        "mean": 8,
+        "sample_sd": 0.0
+      },
+      "uptake": {
+        "values": [
+          1,
+          1,
+          1
+        ],
+        "mean": 1,
+        "sample_sd": 0.0
+      },
+      "joint": {
+        "values": [
+          0,
+          0,
+          0
+        ],
+        "mean": 0,
+        "sample_sd": 0.0
+      },
+      "fallbacks": {
+        "values": [
+          0,
+          0,
+          0
+        ],
+        "mean": 0,
+        "sample_sd": 0.0
+      }
+    },
+    "unfiltered/unrelated": {
+      "f1": {
+        "values": [
+          0.19219219219219222,
+          0.19219219219219222,
+          0.19219219219219222
+        ],
+        "mean": 0.19219219219219222,
+        "sample_sd": 0.0
+      },
+      "parsed": {
+        "values": [
+          86,
+          86,
+          86
+        ],
+        "mean": 86,
+        "sample_sd": 0.0
+      },
+      "correct_tool": {
+        "values": [
+          86,
+          86,
+          86
+        ],
+        "mean": 86,
+        "sample_sd": 0.0
+      },
+      "exact": {
+        "values": [
+          8,
+          8,
+          8
+        ],
+        "mean": 8,
+        "sample_sd": 0.0
+      },
+      "uptake": {
+        "values": [
+          22,
+          22,
+          22
+        ],
+        "mean": 22,
+        "sample_sd": 0.0
+      },
+      "joint": {
+        "values": [
+          0,
+          0,
+          0
+        ],
+        "mean": 0,
+        "sample_sd": 0.0
+      },
+      "fallbacks": {
+        "values": [
+          0,
+          0,
+          0
+        ],
+        "mean": 0,
+        "sample_sd": 0.0
+      }
+    },
+    "memgate/unrelated": {
+      "f1": {
+        "values": [
+          0.17575757575757575,
+          0.17575757575757575,
+          0.17575757575757575
+        ],
+        "mean": 0.17575757575757575,
+        "sample_sd": 0.0
+      },
+      "parsed": {
+        "values": [
+          85,
+          85,
+          85
+        ],
+        "mean": 85,
+        "sample_sd": 0.0
+      },
+      "correct_tool": {
+        "values": [
+          85,
+          85,
+          85
+        ],
+        "mean": 85,
+        "sample_sd": 0.0
+      },
+      "exact": {
+        "values": [
+          7,
+          7,
+          7
+        ],
+        "mean": 7,
+        "sample_sd": 0.0
+      },
+      "uptake": {
+        "values": [
+          24,
+          24,
+          24
+        ],
+        "mean": 24,
+        "sample_sd": 0.0
+      },
+      "joint": {
+        "values": [
+          0,
+          0,
+          0
+        ],
+        "mean": 0,
+        "sample_sd": 0.0
+      },
+      "fallbacks": {
+        "values": [
+          0,
+          0,
+          0
+        ],
+        "mean": 0,
+        "sample_sd": 0.0
+      }
+    },
+    "self_recheck/unrelated": {
+      "f1": {
+        "values": [
+          0.11570247933884296,
+          0.11570247933884296,
+          0.11570247933884296
+        ],
+        "mean": 0.11570247933884296,
+        "sample_sd": 0.0
+      },
+      "parsed": {
+        "values": [
+          29,
+          29,
+          29
+        ],
+        "mean": 29,
+        "sample_sd": 0.0
+      },
+      "correct_tool": {
+        "values": [
+          29,
+          29,
+          29
+        ],
+        "mean": 29,
+        "sample_sd": 0.0
+      },
+      "exact": {
+        "values": [
+          5,
+          5,
+          5
+        ],
+        "mean": 5,
+        "sample_sd": 0.0
+      },
+      "uptake": {
+        "values": [
+          4,
+          4,
+          4
+        ],
+        "mean": 4,
+        "sample_sd": 0.0
+      },
+      "joint": {
+        "values": [
+          0,
+          0,
+          0
+        ],
+        "mean": 0,
+        "sample_sd": 0.0
+      },
+      "fallbacks": {
+        "values": [
+          11,
+          11,
+          11
+        ],
+        "mean": 11,
+        "sample_sd": 0.0
+      }
+    },
+    "judge/unrelated": {
+      "f1": {
+        "values": [
+          0.16901408450704228,
+          0.16901408450704228,
+          0.16901408450704228
+        ],
+        "mean": 0.16901408450704228,
+        "sample_sd": 0.0
+      },
+      "parsed": {
+        "values": [
+          65,
+          65,
+          65
+        ],
+        "mean": 65,
+        "sample_sd": 0.0
+      },
+      "correct_tool": {
+        "values": [
+          65,
+          65,
+          65
+        ],
+        "mean": 65,
+        "sample_sd": 0.0
+      },
+      "exact": {
+        "values": [
+          9,
+          9,
+          9
+        ],
+        "mean": 9,
+        "sample_sd": 0.0
+      },
+      "uptake": {
+        "values": [
+          15,
+          15,
+          15
+        ],
+        "mean": 15,
+        "sample_sd": 0.0
+      },
+      "joint": {
+        "values": [
+          0,
+          0,
+          0
+        ],
+        "mean": 0,
+        "sample_sd": 0.0
+      },
+      "fallbacks": {
+        "values": [
+          0,
+          0,
+          0
+        ],
+        "mean": 0,
+        "sample_sd": 0.0
+      }
+    },
+    "unfiltered/partial": {
+      "f1": {
+        "values": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "mean": 0.5,
+        "sample_sd": 0.0
+      },
+      "parsed": {
+        "values": [
+          3,
+          3,
+          3
+        ],
+        "mean": 3,
+        "sample_sd": 0.0
+      },
+      "correct_tool": {
+        "values": [
+          3,
+          3,
+          3
+        ],
+        "mean": 3,
+        "sample_sd": 0.0
+      },
+      "exact": {
+        "values": [
+          0,
+          0,
+          0
+        ],
+        "mean": 0,
+        "sample_sd": 0.0
+      },
+      "uptake": {
+        "values": [
+          1,
+          1,
+          1
+        ],
+        "mean": 1,
+        "sample_sd": 0.0
+      },
+      "joint": {
+        "values": [
+          0,
+          0,
+          0
+        ],
+        "mean": 0,
+        "sample_sd": 0.0
+      },
+      "fallbacks": {
+        "values": [
+          0,
+          0,
+          0
+        ],
+        "mean": 0,
+        "sample_sd": 0.0
+      }
+    },
+    "memgate/partial": {
+      "f1": {
+        "values": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "mean": 0.5,
+        "sample_sd": 0.0
+      },
+      "parsed": {
+        "values": [
+          3,
+          3,
+          3
+        ],
+        "mean": 3,
+        "sample_sd": 0.0
+      },
+      "correct_tool": {
+        "values": [
+          3,
+          3,
+          3
+        ],
+        "mean": 3,
+        "sample_sd": 0.0
+      },
+      "exact": {
+        "values": [
+          0,
+          0,
+          0
+        ],
+        "mean": 0,
+        "sample_sd": 0.0
+      },
+      "uptake": {
+        "values": [
+          1,
+          1,
+          1
+        ],
+        "mean": 1,
+        "sample_sd": 0.0
+      },
+      "joint": {
+        "values": [
+          0,
+          0,
+          0
+        ],
+        "mean": 0,
+        "sample_sd": 0.0
+      },
+      "fallbacks": {
+        "values": [
+          0,
+          0,
+          0
+        ],
+        "mean": 0,
+        "sample_sd": 0.0
+      }
+    },
+    "self_recheck/partial": {
+      "f1": {
+        "values": [
+          0,
+          0,
+          0
+        ],
+        "mean": 0,
+        "sample_sd": 0.0
+      },
+      "parsed": {
+        "values": [
+          0,
+          0,
+          0
+        ],
+        "mean": 0,
+        "sample_sd": 0.0
+      },
+      "correct_tool": {
+        "values": [
+          0,
+          0,
+          0
+        ],
+        "mean": 0,
+        "sample_sd": 0.0
+      },
+      "exact": {
+        "values": [
+          0,
+          0,
+          0
+        ],
+        "mean": 0,
+        "sample_sd": 0.0
+      },
+      "uptake": {
+        "values": [
+          0,
+          0,
+          0
+        ],
+        "mean": 0,
+        "sample_sd": 0.0
+      },
+      "joint": {
+        "values": [
+          0,
+          0,
+          0
+        ],
+        "mean": 0,
+        "sample_sd": 0.0
+      },
+      "fallbacks": {
+        "values": [
+          1,
+          1,
+          1
+        ],
+        "mean": 1,
+        "sample_sd": 0.0
+      }
+    },
+    "judge/partial": {
+      "f1": {
+        "values": [
+          0,
+          0,
+          0
+        ],
+        "mean": 0,
+        "sample_sd": 0.0
+      },
+      "parsed": {
+        "values": [
+          1,
+          1,
+          1
+        ],
+        "mean": 1,
+        "sample_sd": 0.0
+      },
+      "correct_tool": {
+        "values": [
+          1,
+          1,
+          1
+        ],
+        "mean": 1,
+        "sample_sd": 0.0
+      },
+      "exact": {
+        "values": [
+          0,
+          0,
+          0
+        ],
+        "mean": 0,
+        "sample_sd": 0.0
+      },
+      "uptake": {
+        "values": [
+          0,
+          0,
+          0
+        ],
+        "mean": 0,
+        "sample_sd": 0.0
+      },
+      "joint": {
+        "values": [
+          0,
+          0,
+          0
+        ],
+        "mean": 0,
+        "sample_sd": 0.0
+      },
+      "fallbacks": {
+        "values": [
+          0,
+          0,
+          0
+        ],
+        "mean": 0,
+        "sample_sd": 0.0
+      }
+    }
+  }
+}
