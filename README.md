@@ -96,12 +96,14 @@ Generation resumes existing checkpoints; it does not create a fresh pass merely 
 
 Supplemental generation commands are scripts/run_scoping_ablation.py and scripts/check_memgate_wrapper.py (prepare in the retrieval environment, then run in the GPU environment). Natural-retrieval sensitivity runs with the retrieval environment via scripts/check_natural_retrieval.py. These scripts preserve hashes and reject incompatible resumes. See their corresponding findings documents for exact sequences and limitations.
 
+The exact development/held-out split and enrollment/review records contain task-level derivatives and are kept local-only under the release policy. `scripts.verify_heldout_split` validates the locally preserved split against the pinned benchmark, checks partition and source/query-group integrity, but does not regenerate the excluded screening decisions. Restore those local evidence files before running the exact approved evaluation workflow; without them, a clean checkout supports the published method and aggregate results, but cannot reconstruct the exact selected cases.
+
 ## Changes since Phase 1
 
 Phase 1 used annotated source-linked histories and is retained as historical oracle-style context. Phase 2 introduces query-only corpus retrieval, source/query-grouped development separation, prospective enrollment and human review, the approved 100-parent sample, GPU generation, a development-approved /no_think suffix, defensive filtering, fixed literal scoring, paired uncertainty, ablation and three-pass repeatability. The historical Phase 1 F1 is not a comparable improvement baseline.
 
 ## Repository organization and limits
 
-src/ contains retrieval, prompt, parser and scoring components; scripts/ contains reproducible experiment entry points; results/ contains local raw traces and derived statistics, while public releases include only non-text aggregate evidence; research/evidence/ contains frozen manifests and review records. research/devlog.md records changes and measured effects. Operator-facing notes are separate files, not part of research findings. docs/ is operator-owned and excluded from packaging.
+src/ contains retrieval, prompt, parser and scoring components; scripts/ contains experiment entry points; results/ contains local raw traces and derived statistics, while public releases include only reviewed non-text aggregates; research/evidence/ contains reviewed release metadata, while task-level split, enrollment and review records remain local-only. research/devlog.md records changes and measured effects. Operator-facing notes are separate files, not part of research findings. docs/ is operator-owned and excluded from packaging.
 
 The study uses one quantized local model and synthetic injections. Literal scoring can penalize equivalent representations; the parser evaluates only the first call. Partial-relevance evidence is sparse. Eight later synthetic feasibility candidates received construction review (three Accept, two Revise, three Hold) but were not evaluated and do not enlarge the H3 result. No claim of general defense superiority or proven publishability is made.
