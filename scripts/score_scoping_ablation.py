@@ -7,22 +7,23 @@ from scripts.check_memgate_wrapper import save, sha
 from src.agent.tool_parser import parse_tool_call
 from src.data.loader import load_tasks
 
+FIRST_PASS = Path('results/first-pass')
 
 def main():
     path = Path('results/scoping-ablation.json')
     trace = json.loads(path.read_bytes())
     for p,h in trace['hashes'].items():
         assert sha(p) == h
-    primary = json.loads(Path('results/approved-pass-summary.json').read_bytes())
+    primary = json.loads((FIRST_PASS/'approved-pass-summary.json').read_bytes())
     references = {(r['task'],r['condition']):r for r in primary['rows'] if r['arm']=='judge'}
     assert len(trace['rows']) == len(references) == 204
     assert {(r['task_id'],r['condition']) for r in trace['rows']} == set(references)
     tasks = {t.task_id:t for t in load_tasks()}
-    ann = {p['task_id']:p.get('annotation') for p in json.loads(Path('phase2/evidence/paired-enrollment-v1.json').read_bytes())['parents']}
+    ann = {p['task_id']:p.get('annotation') for p in json.loads(Path('research/evidence/paired-enrollment-v1.json').read_bytes())['parents']}
     rows = []
     for r in trace['rows']:
         tid = r['task_id']; task = tasks[tid]; a = ann[tid]
-        assert sha(Path('results/approved-evaluation')/(tid+'.json')) == r['primary_trace_sha256']
+        assert sha(FIRST_PASS/'approved-evaluation'/(tid+'.json')) == r['primary_trace_sha256']
         call = parse_tool_call(trace['calls'][r['generation']]['response']['choices'][0]['message'])
         args = call['arguments'] if call else {}
         correct = bool(call and call['name']==task.tool_schema['name'])

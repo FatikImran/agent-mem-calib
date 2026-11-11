@@ -7,6 +7,7 @@ from src.agent.tool_parser import parse_tool_call
 from src.data.loader import load_tasks
 from src.eval.parameter_f1 import compute_f1
 
+FIRST_PASS = Path('results/first-pass')
 
 def main():
     inputs = json.loads(INPUT.read_bytes())
@@ -17,13 +18,13 @@ def main():
     assert len(trace['rows']) == len(expected)
     assert {(r['task_id'],r['condition'],r['arm']) for r in trace['rows']} == expected
     tasks = {t.task_id:t for t in load_tasks()}
-    enrollment = json.loads(Path('phase2/evidence/paired-enrollment-v1.json').read_bytes())
+    enrollment = json.loads(Path('research/evidence/paired-enrollment-v1.json').read_bytes())
     ann = {p['task_id']:p.get('annotation') for p in enrollment['parents']}
     panels = defaultdict(list)
     rows = []
     for r in trace['rows']:
         tid = r['task_id']
-        assert sha(Path('results/approved-evaluation')/(tid+'.json')) == r['primary_trace_sha256']
+        assert sha(FIRST_PASS/'approved-evaluation'/(tid+'.json')) == r['primary_trace_sha256']
         call = parse_tool_call(trace['calls'][r['generation']]['response']['choices'][0]['message'])
         correct = bool(call and call['name'] == tasks[tid].tool_schema['name'])
         uptake = bool(correct and call['arguments'].get(ann[tid]['target']) == ann[tid]['candidate_value']) if r['condition'] != 'baseline_hybrid' else None

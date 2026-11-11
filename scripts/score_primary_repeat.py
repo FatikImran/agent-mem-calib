@@ -15,9 +15,9 @@ def main():
     parser.add_argument('--repeat',type=int,choices=(2,3),required=True)
     options=parser.parse_args()
     tasks={t.task_id:t for t in load_tasks()}
-    frozen=json.loads(Path('phase2/evidence/paired-compute-100-v1.json').read_bytes())
+    frozen=json.loads(Path('research/evidence/paired-compute-100-v1.json').read_bytes())
     subset=set(frozen['task_ids'])
-    enrollment=json.loads(Path('phase2/evidence/paired-enrollment-v1.json').read_bytes())
+    enrollment=json.loads(Path('research/evidence/paired-enrollment-v1.json').read_bytes())
     annotations={p['task_id']:p.get('annotation') for p in enrollment['parents']}
     parent={t:t for t in tasks}
     def group(t):

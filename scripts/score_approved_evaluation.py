@@ -9,11 +9,13 @@ from src.agent.tool_parser import parse_tool_call
 from src.data.loader import load_tasks
 from src.eval.parameter_f1 import compute_f1
 
+FIRST_PASS = Path('results/first-pass')
+
 def main():
     tasks={t.task_id:t for t in load_tasks()}
-    frozen=json.loads(Path('phase2/evidence/paired-compute-100-v1.json').read_bytes())
+    frozen=json.loads(Path('research/evidence/paired-compute-100-v1.json').read_bytes())
     subset=set(frozen['task_ids'])
-    enrollment=json.loads(Path('phase2/evidence/paired-enrollment-v1.json').read_bytes())
+    enrollment=json.loads(Path('research/evidence/paired-enrollment-v1.json').read_bytes())
     annotations={p['task_id']:p.get('annotation') for p in enrollment['parents']}
     parent={t:t for t in tasks}
     def group(t):
@@ -29,7 +31,7 @@ def main():
     arms=('unfiltered','memgate','self_recheck','judge')
     rows=[]; provenance=None; digests={}
     for tid,t in tasks.items():
-        path=Path('results/approved-evaluation')/(tid+'.json')
+        path=FIRST_PASS/'approved-evaluation'/(tid+'.json')
         trace=json.loads(path.read_bytes())
         digests[tid]=hashlib.sha256(path.read_bytes()).hexdigest()
         if provenance is None: provenance=trace['hashes']
@@ -90,7 +92,9 @@ def main():
     contrasts += [contrast('unfiltered/unrelated',arm+'/unrelated') for arm in arms[1:]]
     contrasts += [contrast(arm+'/unrelated',arm+'/partial') for arm in arms]
     output={'trace_sha256':digests,'metrics':metrics,'contrasts':contrasts,'rows':rows}
-    dest=Path('results/approved-pass-summary.json');tmp=dest.with_suffix('.tmp')
+    dest=FIRST_PASS/'approved-pass-summary.json'
+    dest.parent.mkdir(parents=True,exist_ok=True)
+    tmp=dest.with_suffix('.tmp')
     tmp.write_text(json.dumps(output,indent=2)+'\n',encoding='utf8');tmp.replace(dest)
     print('Scored',len(rows),'arm outcomes.')
 if __name__=='__main__':main()
