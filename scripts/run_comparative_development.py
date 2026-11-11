@@ -14,7 +14,8 @@ ORIGINAL = Path('results/comparative-development.json')
 REPLAY = Path('results/development-no-think.json')
 HYBRID = Path('results/hybrid-development.json')
 GATE = Path('results/memgate-hybrid-development.json')
-BUDGET = Path('phase2/retrieval-budgets.json')
+BUDGET = Path('research/retrieval-budgets.json')
+FIRST_PASS = Path('results/first-pass')
 
 
 def digest(path):
@@ -42,7 +43,7 @@ def main():
         verify_inputs()
         paired = Path('data/retrieval-dev/eval-paired.json')
         baseline = Path('data/retrieval-dev/eval-baseline.json')
-        gate_path = Path('results/memgate-heldout100-development.json')
+        gate_path = FIRST_PASS/'memgate-heldout100-development.json'
         gate = json.loads(gate_path.read_bytes())
         if gate['source_sha256'] != digest(paired):
             raise ValueError('Gate cache differs from the frozen inputs')
@@ -50,8 +51,8 @@ def main():
         records = json.loads(baseline.read_bytes())['rows']
         for record in records:
             record['variants'].extend(pairs.get(record['task_id'], []))
-        evidence = [paired, baseline, gate_path, Path('phase2/evidence/paired-compute-100-v1.json')]
-        trace_dir = Path('results/approved-evaluation')
+        evidence = [paired, baseline, gate_path, Path('research/evidence/paired-compute-100-v1.json')]
+        trace_dir = FIRST_PASS/'approved-evaluation'
         trace_dir.mkdir(exist_ok=True)
     else:
         source = json.loads(HYBRID.read_bytes())

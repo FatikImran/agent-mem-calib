@@ -1,4 +1,4 @@
-# Observed Windows CPU embedding runtime. Full environment: phase2/evidence/retrieval-runtime-lock.txt
+# Observed Windows CPU embedding runtime. Full environment: research/evidence/retrieval-runtime-lock.txt
 numpy==2.5.4
 torch==2.15.0
 sentence-transformers==6.2.0

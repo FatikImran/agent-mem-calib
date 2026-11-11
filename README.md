@@ -38,11 +38,11 @@ Three greedy primary passes each contain 1,616 outcomes. All scored outcomes mat
 
 F1 above is on a 0–100 scale. Full-release BM25 F1 is 22.17 and hybrid F1 is 24.59. Removing judge scoping instructions increases unrelated uptake from 15% to 22%. Under natural hybrid retrieval, 17/100 unrelated and 0/4 partial injections enter the top five. These exposure counts are not downstream attack-success estimates. The released-wrapper check is a separate 13-query diagnostic.
 
-[Experiment evidence index](phase2/submission-evidence-index.md) · [Primary results](phase2/first-pass-findings.md) · [Repeatability](phase2/primary-repeatability-findings.md) · [Ablation](phase2/scoping-ablation-findings.md) · [Failure analysis](phase2/first-pass-failure-analysis.md)
+[Experiment evidence index](research/submission-evidence-index.md) · [Primary results](research/first-pass-findings.md) · [Repeatability metrics](results/primary-repeatability-summary.json) · [Ablation](research/scoping-ablation-findings.md)
 
 ## Install and obtain assets
 
-Run commands from the repository root. Python 3.12 was used. Base dependencies are in requirements.txt; CPU embedding pins are in requirements-retrieval.txt and the full observed environment is phase2/evidence/retrieval-runtime-lock.txt. The measured Windows GPU build and library receipts are recorded under phase2/evidence. CPU installation alone does not reproduce the reported GPU timings.
+Run commands from the repository root. Python 3.12 was used. Base dependencies are in requirements.txt; CPU embedding pins are in requirements-retrieval.txt and the full observed environment is research/evidence/retrieval-runtime-lock.txt. The measured Windows GPU build and library receipts are recorded under research/evidence. CPU installation alone does not reproduce the reported GPU timings.
 
 ```powershell
 python -m pip install -r requirements.txt
@@ -54,13 +54,13 @@ python -m scripts.verify_benchmark_release
 python -m scripts.download_model
 ```
 
-The benchmark is not included in this repository. These commands fetch it from the official upstream repository and check out the pinned revision used by this study. Run them in a fresh project checkout; if `data/Mem2ActBench` already exists and is not an independent clone, preserve it and use a clean checkout rather than cloning over it. Public releases of this project include code and non-text aggregate evidence only: do not commit benchmark files, raw traces, task-level outputs, or prompts, memories, requests, and model responses copied from benchmark data. See the [release audit](phase2/retrieval-release-audit.md) for the publication protocol and provenance.
+The benchmark is not included in this repository. These commands fetch it from the official upstream repository and check out the pinned revision used by this study. Run them in a fresh project checkout; if `data/Mem2ActBench` already exists and is not an independent clone, preserve it and use a clean checkout rather than cloning over it. Public releases of this project include code and non-text aggregate evidence only: do not commit benchmark files, raw traces, task-level outputs, or prompts, memories, requests, and model responses copied from benchmark data. See the [release audit](research/retrieval-release-audit.md) for the publication protocol and provenance.
 
 The generator is expected at models/Qwen_Qwen3-4B-Q4_K_M.gguf. Its original downloader selects a filename without a pinned upstream revision; compare the downloaded file with the recorded local asset checksum before claiming exact reproduction. The tokenizer/model asset is required for new inference and chunk preparation, but not for scoring saved traces.
 
-For the measured Windows CUDA runtime, create data/runtime/generator-cuda with system site packages, install the official llama-cpp-python 0.3.36 cu124 Windows wheel specified in phase2/evidence/gpu-wheel-receipt.json, and install nvidia-cublas-cu12==12.4.5.8 and nvidia-cuda-runtime-cu12==12.4.127. The runners prepend those environments' NVIDIA bin paths automatically. Verify with scripts/check_gpu_runtime.py. Models and environments are excluded from the source archive.
+For the measured Windows CUDA runtime, create data/runtime/generator-cuda with system site packages, install the official llama-cpp-python 0.3.36 cu124 Windows wheel specified in research/evidence/gpu-wheel-receipt.json, and install nvidia-cublas-cu12==12.4.5.8 and nvidia-cuda-runtime-cu12==12.4.127. The runners prepend those environments' NVIDIA bin paths automatically. Verify with scripts/check_gpu_runtime.py. Models and environments are excluded from the source archive.
 
-No hosted API key is needed. .env.example documents relevant environment variables; scripts do not automatically load a .env file. Most evaluation settings are frozen in phase2/retrieval-budgets.json, design_decisions.md and phase2/evidence/model-revisions.json. Changing these invalidates checkpoint provenance.
+No hosted API key is needed. .env.example documents relevant environment variables; scripts do not automatically load a .env file. Most evaluation settings are frozen in research/retrieval-budgets.json, design_decisions.md and research/evidence/model-revisions.json. Changing these invalidates checkpoint provenance.
 
 ## Reproduce saved scores
 
@@ -102,6 +102,6 @@ Phase 1 used annotated source-linked histories and is retained as historical ora
 
 ## Repository organization and limits
 
-src/ contains retrieval, prompt, parser and scoring components; scripts/ contains reproducible experiment entry points; results/ contains local raw traces and derived statistics, while public releases include only non-text aggregate evidence; phase2/evidence/ contains frozen manifests and review records. phase2/devlog.md records changes and measured effects. Operator-facing notes are separate files, not part of research findings. docs/ is operator-owned and excluded from packaging.
+src/ contains retrieval, prompt, parser and scoring components; scripts/ contains reproducible experiment entry points; results/ contains local raw traces and derived statistics, while public releases include only non-text aggregate evidence; research/evidence/ contains frozen manifests and review records. research/devlog.md records changes and measured effects. Operator-facing notes are separate files, not part of research findings. docs/ is operator-owned and excluded from packaging.
 
 The study uses one quantized local model and synthetic injections. Literal scoring can penalize equivalent representations; the parser evaluates only the first call. Partial-relevance evidence is sparse. Eight later synthetic feasibility candidates received construction review (three Accept, two Revise, three Hold) but were not evaluated and do not enlarge the H3 result. No claim of general defense superiority or proven publishability is made.
