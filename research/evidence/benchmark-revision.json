@@ -1,0 +1,23 @@
+{
+  "repo_url": "https://github.com/Cantaloupe-M/Mem2ActBench",
+  "commit": "c935c65be9aa19c930b60657c0c4b2b7ea13a34a",
+  "canonicalization": "CRLF to LF; all other bytes unchanged",
+  "files": {
+    "Mem2ACTBench/Mem2ACT_conversation.jsonl": {
+      "git_blob": "2bac5ada6969bc67c8d91831e3dbaf22de15b6d0",
+      "sha256_lf": "8ab30dfb7b2a7455bd5b84250c03b48ebe5cc377a2b5ca03a196bf471c9bdca2"
+    },
+    "Mem2ACTBench/qa_dataset.jsonl": {
+      "git_blob": "dde6f1a787706623ebc2572984b42a1d99e6231d",
+      "sha256_lf": "0ef0ea153463df23443b5e7f23d2af642f8ae49c1450174ba5918bcc451c77e4"
+    },
+    "Mem2ACTBench_small/qa_dataset.jsonl": {
+      "git_blob": "3be4ffefd0524220a3cda38f313b50dad7436e75",
+      "sha256_lf": "c5e3f47799d850b607d0ff56829335f843e208ad4d3b1eae89a814eae1974b09"
+    },
+    "Mem2ACTBench_small/Mem2ACT_conversation.jsonl": {
+      "git_blob": "594826a621e46191dd591c26ee03bcbd2739a69b",
+      "sha256_lf": "c935adfbe0e1743b8eb373eba31611b97cf396ee09516f68f6621e49365cbcaf"
+    }
+  }
+}

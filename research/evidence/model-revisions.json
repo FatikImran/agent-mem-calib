@@ -1,0 +1,18 @@
+{
+  "bge_m3": {
+    "repo_id": "BAAI/bge-m3",
+    "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+  },
+  "memgate_encoder": {
+    "repo_id": "sentence-transformers/all-MiniLM-L6-v2",
+    "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41"
+  },
+  "memgate_checkpoint": {
+    "url": "https://raw.githubusercontent.com/Kevin-Zh-CS/MemGate/05f89d003854e99523b2c74df54db7b0d2fa2643/checkpoints/Memgate.pt",
+    "bytes": 36785077,
+    "sha256": "cbb33abf27caf2d053d7e1f6d86e2a1b8c6292b840a63a3605fad193b0f41b5b"
+  },
+  "memgate_source": {
+    "sha256": "10c4a33e98f19ea1a35fea72d97a5112242f6d567c6698783f46a77192179f1f"
+  }
+}

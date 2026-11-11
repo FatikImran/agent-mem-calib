@@ -1,0 +1,6 @@
+{
+  "file": "models\\Qwen_Qwen3-4B-Q4_K_M.gguf",
+  "bytes": 2497280960,
+  "sha256": "fbe1d5edd4ce802ae3ae7c7e4ab7d09789d697fdac1fc7929f8df4ca3c41bae3",
+  "scope": "Observed local generator asset used by the recorded evaluations; upstream revision not pinned by original downloader."
+}

@@ -1,0 +1,15 @@
+{
+  "Mem2ACTBench_small": {
+    "sessions": 429,
+    "qa_records": 400,
+    "tasks_with_no_linked_turns": 16,
+    "tasks_with_missing_source_ids": 12
+  },
+  "Mem2ACTBench": {
+    "sessions": 2029,
+    "qa_records": 558,
+    "tasks_with_no_linked_turns": 21,
+    "tasks_with_missing_source_ids": 15
+  },
+  "shared_query_and_gold_call": 400
+}
