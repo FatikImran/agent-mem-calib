@@ -9,14 +9,21 @@ from scripts.screen_400 import sha
 from scripts.verify_heldout_split import build
 from src.data.loader import load_tasks
 
-ROOT = Path('phase2/evidence')
-REVIEW = Path('phase2/operator-review-screen-v1.md')
+ROOT = Path('research/evidence')
+REVIEW = Path('research/operator-review-screen-v1.md')
 SCREEN = ROOT / 'screen-400-v1.json'
 
 
 def save_frozen(path, value):
     if path.exists():
-        if json.loads(path.read_bytes()) != value:
+        existing = json.loads(path.read_bytes())
+        hashes = existing.get('hashes')
+        if isinstance(hashes, dict):
+            existing['hashes'] = {
+                key.replace('phase2\\', 'research\\', 1) if key.startswith('phase2\\') else key: digest
+                for key, digest in hashes.items()
+            }
+        if existing != value:
             raise ValueError(f'Existing frozen artifact differs: {path}')
     else:
         with path.open('x', encoding='utf8') as stream:
@@ -78,7 +85,7 @@ def main():
     for tid,source in [('qa_327','toolace_5607'),('qa_305','toolace_702'),('qa_251','toolace_4092')]:
         turns=[t for t in tasks[tid].memory_context if t.source_id==source]
         citations[tid]={'source':source,'linked_turn_count':len(turns)}
-    hashes={str(p):hashlib.sha256(p.read_bytes()).hexdigest() for p in (SCREEN,REVIEW,ROOT/'heldout-split-v1.json',Path('phase2/proposed-enrollment-and-scoring.md'))}
+    hashes={str(p):hashlib.sha256(p.read_bytes()).hexdigest() for p in (SCREEN,REVIEW,ROOT/'heldout-split-v1.json',Path('research/proposed-enrollment-and-scoring.md'))}
     save_frozen(ROOT/'human-review-adjudication-v1.json',{'hashes':hashes,'cards':reviews,'citation_checks':citations})
     save_frozen(ROOT/'paired-enrollment-v1.json',{'hashes':hashes,'parents':ledger})
     for side in ('development','heldout'):

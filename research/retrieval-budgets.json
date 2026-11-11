@@ -1,0 +1,9 @@
+{
+  "chunk_tokens": 128,
+  "retrieved_chunks": 5,
+  "injection_reserve_tokens": 128,
+  "context_tokens": 4096,
+  "generator_output_tokens": 1024,
+  "self_recheck_output_tokens": 1024,
+  "judge_output_tokens": 2048
+}
