@@ -22,6 +22,7 @@ models/
 
 # Local exploratory diagnostics and planning helpers.
 /scripts/adjudicate_h3_feasibility.py
+/scripts/adjudicate_review.py
 /scripts/audit_prompt_capacity.py
 /scripts/check_gap3_clean.py
 /scripts/check_hybrid_development.py
