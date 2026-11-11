@@ -37,6 +37,7 @@ models/
 /scripts/record_repo_audit.py
 /scripts/replay_gap3_cap.py
 /scripts/screen_gap3_dev.py
+/scripts/screen_400.py
 /scripts/summarize_comparative_development.py
 /scripts/summarize_development_no_think.py
 /scripts/summarize_gap3_screen_calls.py
