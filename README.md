@@ -38,7 +38,7 @@ Three greedy primary passes each contain 1,616 outcomes. All scored outcomes mat
 
 F1 above is on a 0–100 scale. Full-release BM25 F1 is 22.17 and hybrid F1 is 24.59. Removing judge scoping instructions increases unrelated uptake from 15% to 22%. Under natural hybrid retrieval, 17/100 unrelated and 0/4 partial injections enter the top five. These exposure counts are not downstream attack-success estimates. The released-wrapper check is a separate 13-query diagnostic.
 
-[Experiment evidence index](research/submission-evidence-index.md) · [Primary results](research/first-pass-findings.md) · [Repeatability metrics](results/primary-repeatability-summary.json) · [Ablation](research/scoping-ablation-findings.md)
+[Experiment evidence index](research/experiment-evidence-index.md) · [Primary results](research/first-pass-findings.md) · [Repeatability metrics](results/primary-repeatability-summary.json) · [Ablation](research/scoping-ablation-findings.md)
 
 ## Install and obtain assets
 

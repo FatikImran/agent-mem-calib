@@ -48,13 +48,12 @@ models/
 /research/**
 !/research/
 !/research/architecture.md
-!/research/author-paper.tex
 !/research/first-pass-findings.md
 !/research/memgate-wrapper-findings.md
 !/research/retrieval-budgets.json
 !/research/retrieval-release-audit.md
 !/research/scoping-ablation-findings.md
-!/research/submission-evidence-index.md
+!/research/experiment-evidence-index.md
 !/research/evidence/
 !/research/evidence/benchmark-revision.json
 !/research/evidence/bge-weight-download.json
